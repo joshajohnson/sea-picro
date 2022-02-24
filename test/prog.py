@@ -15,8 +15,8 @@ from multiprocessing import Process
 bl_vid = 0x2e8a
 bl_pid = 0x0003
 
-cpy_vid = 0x1b4f
-cpy_pid = 0x0026
+cpy_vid = 0x6a6a
+cpy_pid = 0x5350
 
 def flash_circuitpython():
     ''' Flashes circuitpython firmware. '''
@@ -31,7 +31,7 @@ def flash_circuitpython():
 
     time.sleep(2)
     print("RPi Bootloader found, copying CircuitPython")
-    retval = os.system("cp circuitpython-sparkfun.uf2 /media/josh/RPI-RP2")
+    retval = os.system("cp circuitpython-sea-picro.uf2 /media/josh/RPI-RP2")
     if retval != 0:
         print(f'{Fore.RED}#####################')
         print(f'{Fore.RED}FAILED TO FLASH CPY !')
