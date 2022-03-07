@@ -5,10 +5,10 @@
   (paper "A4")
 
   (title_block
-    (title "Sea Micro")
-    (date "2020-12-11")
-    (rev "0.3")
-    (company "Josh Johnson and Custom KBD")
+    (title "Sea Picro")
+    (date "2022-01-07")
+    (rev "0.1")
+    (company "Josh Johnson")
   )
 
   (lib_symbols
