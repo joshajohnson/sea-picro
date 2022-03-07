@@ -50,7 +50,7 @@ def flash_firmware():
         time.sleep(1)
 
     print("CircuitPython found, copying test firmware")
-    time.sleep(2)
+    time.sleep(5)
     retval = os.system("cp -rf circuitpy-files/* /media/josh/CIRCUITPY")
     if retval != 0:
         print(f'{Fore.RED}#########################')
