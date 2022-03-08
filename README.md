@@ -1,12 +1,12 @@
 # Sea-Picro
 
-Sea-Picro is a RP2040 based board in the Arduino Pro Micro formfactor. Like the [Sea-Micro](https://github.com/joshajohnson/sea-micro), it's designed to be a drop in replacement for keyboards wanting an upgrade from ATmega32u4 based pro micros.
+Sea-Picro is a RP2040 based board in the Arduino Pro Micro form factor. Like [Sea-Micro](https://github.com/joshajohnson/sea-micro#sea-micro), it's designed to be a drop in replacement for keyboards wanting an upgrade from ATmega32u4 based pro micros.
 
 ![top of pcb render](documentation/sea-picro-render-front.png)
 
 ## Features
 - Compatiable with any pro micro based keyboard (requires new firmware)
-- RP2040 microcontroller, with dual MO+ processors at up to 133MHz
+- RP2040 microcontroller, with dual M0+ processors at up to 133MHz
 - Mid mount USB-C connector, which is low profile and can't be ripped off
 - ROM bootloader which prevents board from being bricked
 - Single button reset / bootloader circuit which changes behaviour based on how long it's held (RP2040 usually requires two buttons to flash new firmware)
@@ -22,11 +22,11 @@ As such all of the components can be sourced from JLC's SMT parts library, with 
 
 ## One Button Reset / Bootloader Circuit
 
-One of the tricky things with the RP2040 is that unlike the pro micro, to update the firmware you need to use two buttons in sequence to put it into the bootloader. To get around this, I've designed a circuit which when tapped for 500ms will reset the board, but when held for 2 seconds will jump into the bootloader. 
+One of the tricky things with the RP2040 is that unlike the pro micro, to update the firmware you need to use two buttons in sequence to put it into the bootloader. To get around this, I've designed a circuit which when tapped for less than 500ms will reset the board, but when held for 2 seconds or more will jump into the bootloader. 
 
 At the time of writing the circuit as only been simulated, so is yet to be confirmed as working and may require tweaking of some component values for it to work properly. If you want to have a play with the simulation the LTSpice file is in `simulation/` along with screenshots of it's output for different switch times. 
 
-Below is a screenshot of the circuit and simulation, showing a 60ms delay in nCS being pulled high after reset goes high which is required to jump into the bootloader.
+Below is a screenshot of the circuit and simulation, showing a 60ms delay in nCS being pulled high after reset goes high, which is required to jump into the bootloader.
 
 ![ltspice simulation of delayed nCS circuit](simulation/hold-close-up.png)
 
