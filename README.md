@@ -3,8 +3,8 @@
 Sea-Picro is a RP2040 based board in the Arduino Pro Micro form factor. Like [Sea-Micro](https://github.com/joshajohnson/sea-micro#sea-micro), it's designed to be a drop in replacement for keyboards wanting an upgrade from ATmega32u4 based pro micros.
 
 There are two variants:
-- Pro micro pinout, with reset button
-- Elite-C pinout, without reset button
+- Pro micro pinout, with onboard RGB LED and reset button
+- Elite-C pinout, with dedicated 5V RGB LED pin, but without a reset button
 
 **Sea-Picro EXT**
 ![top of pcb render](documentation/sea-picro-ext-top.png)
@@ -19,7 +19,7 @@ There are two variants:
 - Optional [Elite-C](https://deskthority.net/wiki/Elite-C) style pinout, adding an additional 5 IO for large keyboards
 - Single button reset / bootloader circuit which changes behaviour based on how long it's held (RP2040 usually requires two buttons to flash new firmware, making it challenging when installed upside down in a keyboard)
 - ROM bootloader which prevents board from being bricked
-- Onboard power LED, along with a WS2812 LED for use with CircuitPython / as a status indicator
+- Onboard power LED, along with a WS2812 LED for use with CircuitPython / as a status indicator on the RST version. EXT version has a 5V level shifter and extra pin to drive strings of WS2812 LEDs.
 - IO pinout identical to the [Sparkfun RP2040 Pro Micro](https://www.sparkfun.com/products/18288)
 
 ![bottom of pcb render](documentation/sea-picro-ext-bot.png)

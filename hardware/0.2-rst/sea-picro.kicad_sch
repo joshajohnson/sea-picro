@@ -4139,7 +4139,7 @@
     (property "Value" "BOOT" (id 1) (at 126.365 169.545 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (id 2) (at 121.92 173.355 0)
+    (property "Footprint" "josh-test-point:TestPoint_SMDPad_D1.0mm_NO_SILK" (id 2) (at 121.92 173.355 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 121.92 173.355 0)
@@ -4515,7 +4515,7 @@
     (property "Value" "nRST" (id 1) (at 77.47 151.765 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (id 2) (at 73.025 155.575 0)
+    (property "Footprint" "josh-test-point:TestPoint_SMDPad_D1.0mm_NO_SILK" (id 2) (at 73.025 155.575 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 73.025 155.575 0)
@@ -5188,7 +5188,7 @@
     (property "Value" "DELAY" (id 1) (at 101.6 169.545 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm" (id 2) (at 109.22 174.625 0)
+    (property "Footprint" "josh-test-point:TestPoint_SMDPad_D1.0mm_NO_SILK" (id 2) (at 109.22 174.625 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 109.22 174.625 0)
@@ -6715,13 +6715,13 @@
       (reference "SW1") (unit 1) (value "SWITCH") (footprint "josh-buttons-switches:SW_Push_KMR2")
     )
     (path "/2b41e7a9-0c09-4e41-9f7a-61ea0174a7da"
-      (reference "TP1") (unit 1) (value "nRST") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+      (reference "TP1") (unit 1) (value "nRST") (footprint "josh-test-point:TestPoint_SMDPad_D1.0mm_NO_SILK")
     )
     (path "/6932f11f-ad59-4756-a526-ea6bfbb8b520"
-      (reference "TP2") (unit 1) (value "DELAY") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+      (reference "TP2") (unit 1) (value "DELAY") (footprint "josh-test-point:TestPoint_SMDPad_D1.0mm_NO_SILK")
     )
     (path "/02975932-bf30-4606-900b-744ae844a718"
-      (reference "TP3") (unit 1) (value "BOOT") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
+      (reference "TP3") (unit 1) (value "BOOT") (footprint "josh-test-point:TestPoint_SMDPad_D1.0mm_NO_SILK")
     )
     (path "/da9d8c97-5301-4179-9d57-0a9ed815b1de"
       (reference "TP4") (unit 1) (value "CLK") (footprint "josh-test-point:TestPoint_THTPad_D1.0mm_Drill0.5mm_NO_SILK")
