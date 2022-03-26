@@ -5635,8 +5635,8 @@
 
   (gr_line (start 119.75 77.25) (end 119.25 76.75) (layer "B.SilkS") (width 0.15) (tstamp 38ebae27-fe23-4ee8-aa32-fd9f9b310c6c))
   (gr_line (start 133.15 76.7) (end 132.95 76.9) (layer "B.SilkS") (width 0.15) (tstamp edb83b59-fce0-4479-988c-f8e045031f79))
-  (gr_line (start 135.1 68.5) (end 135.1 114) (layer "Dwgs.User") (width 0.1) (tstamp 7a29648a-3f34-434e-a2ca-a379280e0dfe))
-  (gr_line (start 117.3 68.5) (end 117.3 114) (layer "Dwgs.User") (width 0.1) (tstamp 98c7a652-a3f2-42c3-bb3b-647349cc72d4))
+  (gr_line (start 111.4 107.8) (end 135.4 107.8) (layer "Dwgs.User") (width 0.1) (tstamp 06b57733-f545-49fc-900f-f90ae9b9047c))
+  (gr_line (start 111.4 74.8) (end 135.4 74.8) (layer "Dwgs.User") (width 0.1) (tstamp 66749c6a-b16f-43be-bab1-76caa7a8a44a))
   (gr_line (start 117.3 75.3) (end 117.3 107.3) (layer "Edge.Cuts") (width 0.1) (tstamp 00000000-0000-0000-0000-00005e15eb05))
   (gr_line (start 117.8 107.8) (end 134.6 107.8) (layer "Edge.Cuts") (width 0.1) (tstamp 00000000-0000-0000-0000-00005ecd38a7))
   (gr_line (start 131.225 74.8) (end 134.6 74.8) (layer "Edge.Cuts") (width 0.1) (tstamp 00000000-0000-0000-0000-00005fd46faf))
@@ -5743,7 +5743,7 @@
   (gr_text "3V3" (at 131.57619 86.35) (layer "B.SilkS") (tstamp fe9b0007-3eaf-46a3-9348-c69886cb92da)
     (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
   )
-  (gr_text "<- Vscore along ->\nthese edges if\npanelising" (at 126.1 70.7) (layer "Dwgs.User") (tstamp 7df2f26d-9ca9-4f1d-851c-3901ac57134f)
+  (gr_text "<- V score along these lines ->\nnote USB connector sticks out 2mm" (at 113.6 91 90) (layer "Dwgs.User") (tstamp 9ee66366-9074-4bc0-8447-8c0b7199acdf)
     (effects (font (size 1 1) (thickness 0.15)))
   )
 
