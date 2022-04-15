@@ -36,6 +36,7 @@ fp-info-cache
 *.gto
 *.gtp
 *.gts
+*.gbr
 
 *.zip
 *.step
