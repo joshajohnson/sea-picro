@@ -2,7 +2,7 @@ Item,Qty,Reference(s),Value,Footprint,JLC Basic,LCSC,MPN ,Manufacturer
 1,5,"C1, C2, C3, C5, C19",4u7,Capacitor_SMD:C_0402_1005Metric,Y,C23733,CL05A475MP5NRNC,Samsung Electro-Mechanics
 2,10,"C4, C8, C10, C11, C13, C14, C15, C16, C17, C18",100n,Capacitor_SMD:C_0402_1005Metric,Y,C1525,CL05B104KO5NNNC,Samsung Electro-Mechanics
 3,2,"C6, C7",15p,Capacitor_SMD:C_0402_1005Metric,Y,C1548,0402CG150J500NT,FH(Guangdong Fenghua Advanced Tech)
-4,2,"C9, C12",2u2,Capacitor_SMD:C_0402_1005Metric,Y,C12530,CL05A225MQ5NSNC,Samsung Electro-Mechanics
+4,2,"C9, C12",1u,Capacitor_SMD:C_0402_1005Metric,Y,C15849,CL10A105KB8NNNC,Samsung Electro-Mechanics
 5,1,D1,B5817WS,Diode_SMD:D_SOD-323,N,C122854,B5817WS,Shikues
 6,1,D2,LED,LED_SMD:LED_0603_1608Metric,Y,C72041,19-217/BHC-ZL1M2RY/3T,Everlight Elec
 7,1,F1,500mA,josh-passives-smt:Fuse_0603_1608Metric,N,C210357,MF-FSMF050X-2,BOURNS
