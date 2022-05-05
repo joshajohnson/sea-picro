@@ -99,7 +99,7 @@ if __name__ == "__main__":
 
     # Connect to test fixture
     serial_io = None
-    uart = serial.Serial("/dev/ttyACM1", 115200, timeout=0.1)
+    uart = serial.Serial("/dev/ttyACM0", 115200, timeout=0.1)
     serial_io = io.TextIOWrapper(io.BufferedRWPair(uart, uart))
 
     parser = argparse.ArgumentParser()
