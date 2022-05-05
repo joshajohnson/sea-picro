@@ -3495,13 +3495,12 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 64fc82fc-e027-40f9-bf4d-4802f61f462c)
   )
-  (text "Tap for 500ms to reset\nHold for 2 seconds to enter UF2 bootloader"
+  (text "Tap for < 500ms to reset\nHold for > 500ms to enter UF2 bootloader"
     (at 44.45 130.81 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 686cf7c0-63e9-4653-b65a-3309b415de71)
   )
-  (text "RC Delay circuit, values\ncan be tweaked as required"
-    (at 74.295 170.18 0)
+  (text "RC delay" (at 84.455 172.085 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 76306d6a-cd50-4a6c-a19c-369d820ad481)
   )
@@ -5971,13 +5970,13 @@
     (property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP2112.pdf" (id 3) (at 113.665 31.115 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "LCSC" "C82942" (id 4) (at 113.665 33.655 0)
+    (property "LCSC" "C150742" (id 4) (at 113.665 33.655 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "MPN " "ME6211C33M5G-N" (id 5) (at 113.665 33.655 0)
+    (property "MPN " "AP7365-33WG-7 " (id 5) (at 113.665 33.655 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Manufacturer" "MICRONE(Nanjing Micro One Elec)" (id 6) (at 113.665 33.655 0)
+    (property "Manufacturer" "Diodes Incorporated" (id 6) (at 113.665 33.655 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "JLC Basic" "N" (id 7) (at 113.665 33.655 0)
@@ -6742,7 +6741,7 @@
       (reference "TP5") (unit 1) (value "IO") (footprint "josh-test-point:TestPoint_THTPad_D1.0mm_Drill0.5mm_NO_SILK")
     )
     (path "/d26fce45-c1d6-42bc-931d-972bf3799097"
-      (reference "U1") (unit 1) (value "ME6211C33M5G-N") (footprint "Package_TO_SOT_SMD:SOT-23-5")
+      (reference "U1") (unit 1) (value "AP7365-33WG-7 ") (footprint "Package_TO_SOT_SMD:SOT-23-5")
     )
     (path "/578f7d98-6025-491f-b2c7-18b0b10fb26e"
       (reference "U2") (unit 1) (value "GD25Q64CWIGR") (footprint "Package_SON:WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm")

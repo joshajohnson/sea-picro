@@ -525,9 +525,9 @@
     (descr "SOT, 5 Pin (https://www.jedec.org/sites/default/files/docs/Mo-178c.PDF variant AA), generated with kicad-footprint-generator ipc_gullwing_generator.py")
     (tags "SOT TO_SOT_SMD")
     (property "JLC Basic" "N")
-    (property "LCSC" "C82942")
-    (property "MPN " "ME6211C33M5G-N")
-    (property "Manufacturer" "MICRONE(Nanjing Micro One Elec)")
+    (property "LCSC" "C150742")
+    (property "MPN " "AP7365-33WG-7 ")
+    (property "Manufacturer" "Diodes Incorporated")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
     (path "/d26fce45-c1d6-42bc-931d-972bf3799097")
@@ -536,7 +536,7 @@
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 70b955f8-f2b5-4e9b-8733-471487271626)
     )
-    (fp_text value "ME6211C33M5G-N" (at 0 2.4) (layer "F.Fab") hide
+    (fp_text value "AP7365-33WG-7 " (at 0 2.4) (layer "F.Fab") hide
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 3d2e1835-e3f3-4fe8-b4ee-90f8281dd2e6)
     )
