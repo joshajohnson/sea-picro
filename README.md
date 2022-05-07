@@ -34,7 +34,7 @@ As such all of the components can be sourced from JLC's SMT parts library, with 
 
 ## One Button Reset / Bootloader Circuit
 
-One of the tricky things with the RP2040 is that unlike the pro micro, to update the firmware you need to use two buttons in sequence to put it into the bootloader. To get around this, I've designed a circuit which when tapped for less than 500ms will reset the board, but when held for 500ms or more will jump into the bootloader. This makes life much easier for keyboards that install the microcontroller upside down.
+One of the tricky things with the RP2040 is that unlike the pro micro, to update the firmware you need to use two buttons in sequence to put it into the bootloader. To get around this, I've designed a circuit which when tapped for less than 500ms will reset the board, but when held for 500ms or more will jump into the bootloader. This makes life much easier for keyboards that install the microcontroller upside down, or have limited access to the reset buttons on the micro.
 
 ![reset circuit schematic](documentation/reset-circuit.png)
 
