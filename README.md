@@ -29,6 +29,9 @@ Sea-Picro was designed with the goal of being assembled at JLCPCB, as it will ea
 
 As such all of the components can be sourced from JLC's SMT parts library, with 8 of the components being basic parts, and 11 being extended. In quantity 50, each board comes out to $6 USD / $8 AUD + freight. (8th March 2022)
 
+## Pinout
+![annotated pinout of PCB](documentation/pinout/sea-picro-pinout.png)
+
 ## One Button Reset / Bootloader Circuit
 
 One of the tricky things with the RP2040 is that unlike the pro micro, to update the firmware you need to use two buttons in sequence to put it into the bootloader. To get around this, I've designed a circuit which when tapped for less than 500ms will reset the board, but when held for 500ms or more will jump into the bootloader. This makes life much easier for keyboards that install the microcontroller upside down.
