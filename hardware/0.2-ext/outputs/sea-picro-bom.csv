@@ -17,4 +17,4 @@ Item,Qty,Reference(s),Value,Footprint,JLC Basic,LCSC,MPN ,Manufacturer
 16,1,U2,GD25Q64CWIGR,Package_SON:WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm,N,C395511,GD25Q64CWIGR,GigaDevice Semicon Beijing 
 17,1,U3,RP2040,josh-dfn-qfn:RP2040-QFN-56,N,C2040,RP2040,Raspberry Pi 
 18,1,U4,74LVC1T45Z6-7,Package_TO_SOT_SMD:SOT-563,N,C441819,74LVC1T45Z6-7,Diodes Incorporated
-19,1,Y1,12MHz,josh-oscillators:Crystal_SMD_2520-4Pin_2.5x2.0mm,N,C2C2149204149205,2TJ412000HYGBC,JYJE
+19,1,Y1,12MHz,josh-oscillators:Crystal_SMD_2520-4Pin_2.5x2.0mm,N,C2149204,2TJ412000HYGBC,JYJE

@@ -2296,7 +2296,7 @@
     (descr "SMD Crystal SERIES SMD2520/4 http://www.newxtal.com/UploadFiles/Images/2012-11-12-09-29-09-776.pdf, 2.5x2.0mm^2 package")
     (tags "SMD SMT crystal")
     (property "JLC Basic" "N")
-    (property "LCSC" "C2C2149204149205")
+    (property "LCSC" "C2149204")
     (property "MPN " "2TJ412000HYGBC")
     (property "Manufacturer" "JYJE")
     (property "Sheetfile" "sea-picro.kicad_sch")

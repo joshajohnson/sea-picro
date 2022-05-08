@@ -4494,7 +4494,7 @@
     (property "Datasheet" "~" (id 3) (at 127.635 104.775 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "LCSC" "C2C2149204149205" (id 4) (at 127.635 104.775 0)
+    (property "LCSC" "C2149204" (id 4) (at 127.635 104.775 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "MPN " "2TJ412000HYGBC" (id 5) (at 127.635 104.775 0)
