@@ -5675,7 +5675,7 @@
   (gr_text "R" (at 126.6 102.75) (layer "B.SilkS") (tstamp 213b595f-6b9a-47f9-b34e-909b18429656)
     (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
   )
-  (gr_text "15" (at 126.2 104.7 90) (layer "B.SilkS") (tstamp 24558c2c-295d-4fc0-875c-afc19896a114)
+  (gr_text "12" (at 126.2 104.7 90) (layer "B.SilkS") (tstamp 24558c2c-295d-4fc0-875c-afc19896a114)
     (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
   )
   (gr_text "G" (at 132.4 81.6) (layer "B.SilkS") (tstamp 3666e083-0c80-4930-aeb4-865e812a658a)
