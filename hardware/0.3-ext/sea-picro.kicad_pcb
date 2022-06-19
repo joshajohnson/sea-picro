@@ -5771,9 +5771,6 @@
   (gr_text "<- V score along these lines ->\nnote USB connector sticks out 2mm" (at 114.2 91 90) (layer "Dwgs.User") (tstamp 434db5ef-bbc9-4df8-a2a8-40a4049429b8)
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (gr_text "PIN 12 LABELED\nINCORRECTLY ON \nBACK SILK" (at 126.3 110.9) (layer "Dwgs.User") (tstamp 6f2d24f7-ad92-48c4-acf3-fa47d8165bf8)
-    (effects (font (size 1 1) (thickness 0.15)))
-  )
 
   (segment (start 121.2 92.57) (end 121.334477 92.435523) (width 0.2) (layer "F.Cu") (net 1) (tstamp 01503403-3e39-4806-8cbb-3c8f12f37e01))
   (segment (start 121.3 90.3875) (end 121.3 89.6495) (width 0.2) (layer "F.Cu") (net 1) (tstamp 0231c1b6-3d45-4ebe-af3a-cca5ee71a71e))
