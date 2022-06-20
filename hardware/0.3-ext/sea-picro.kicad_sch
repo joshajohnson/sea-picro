@@ -5,9 +5,9 @@
   (paper "A4")
 
   (title_block
-    (title "Sea Picro Extended")
-    (date "2022-03-13")
-    (rev "0.2")
+    (title "Sea Picro EXT")
+    (date "2022-06-20")
+    (rev "0.3")
     (company "Josh Johnson")
   )
 
@@ -2468,9 +2468,9 @@
 
   (no_connect (at 186.69 128.905) (uuid 217fcc60-bc5b-4238-b108-872f7a722106))
   (no_connect (at 186.69 95.885) (uuid 95fb61bb-9ebe-4a13-84bf-de8a1593812c))
-  (no_connect (at 186.69 93.345) (uuid 95fb61bb-9ebe-4a13-84bf-de8a1593812c))
-  (no_connect (at 186.69 113.665) (uuid 95fb61bb-9ebe-4a13-84bf-de8a1593812c))
-  (no_connect (at 186.69 111.125) (uuid 95fb61bb-9ebe-4a13-84bf-de8a1593812c))
+  (no_connect (at 186.69 93.345) (uuid 95fb61bb-9ebe-4a13-84bf-de8a1593812d))
+  (no_connect (at 186.69 113.665) (uuid 95fb61bb-9ebe-4a13-84bf-de8a1593812e))
+  (no_connect (at 186.69 111.125) (uuid 95fb61bb-9ebe-4a13-84bf-de8a1593812f))
 
   (wire (pts (xy 100.965 135.255) (xy 100.965 137.795))
     (stroke (width 0) (type default) (color 0 0 0 0))
