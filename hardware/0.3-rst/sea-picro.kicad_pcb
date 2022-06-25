@@ -162,8 +162,9 @@
     (at 126.14951 91.28)
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "exclude_from_bom" "")
     (path "/2d329f0c-01cc-4abc-8aac-c90db7bcde7d")
-    (attr through_hole)
+    (attr through_hole exclude_from_bom)
     (fp_text reference "J2" (at -0.2 -21.54951 unlocked) (layer "F.SilkS") hide
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 3e54f52d-7407-4f37-80c2-89b9c05c4acf)
@@ -449,6 +450,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/ce5b66e8-b710-4452-b68c-9cd786041b99")
     (attr smd)
     (fp_text reference "R16" (at 0 -1.17) (layer "F.SilkS") hide
@@ -495,6 +497,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/04cca41a-f5c7-45f9-a0fd-d32a0552fd95")
     (attr smd)
     (fp_text reference "C19" (at 0 -1.16 90) (layer "F.SilkS") hide
@@ -541,6 +544,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/c9d36ad3-ab46-445d-bfac-6e0a234650cb")
     (attr smd)
     (fp_text reference "R6" (at 0 -1.17 90) (layer "F.SilkS") hide
@@ -587,6 +591,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/78aacef3-fcbd-4cea-a7fb-158731ecdc61")
     (attr smd)
     (fp_text reference "C10" (at 0 -1.16 90) (layer "F.SilkS") hide
@@ -633,6 +638,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/520daf12-283b-46f6-a718-80ee0d1dedfc")
     (attr smd)
     (fp_text reference "C8" (at 0 -1.16 90) (layer "F.SilkS") hide
@@ -679,6 +685,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/29d3009a-0a2b-4a5c-932c-9ca6a9adc9de")
     (attr smd)
     (fp_text reference "C11" (at 0 -1.16) (layer "F.SilkS") hide
@@ -721,10 +728,14 @@
     (tags "SOT TO_SOT_SMD")
     (property "JLC Basic" "N")
     (property "LCSC" "C150742")
+    (property "LCSC2" "C82942")
     (property "MPN " "AP7365-33WG-7 ")
+    (property "MPN2" "ME6211C33M5G-N")
     (property "Manufacturer" "Diodes Incorporated")
+    (property "Manufacturer2" "MICRONE(Nanjing Micro One Elec) ")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y - Confirm with Josh")
     (path "/d26fce45-c1d6-42bc-931d-972bf3799097")
     (attr smd)
     (fp_text reference "U1" (at 0 -2.4) (layer "F.SilkS") hide
@@ -785,6 +796,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/f27d38b4-b8a3-4c17-8509-591286919f51")
     (attr smd)
     (fp_text reference "R10" (at 0 -1.17 90) (layer "F.SilkS") hide
@@ -829,6 +841,7 @@
     (property "Manufacturer" "Worldsemi ")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "N")
     (path "/b6e2f164-7f7f-4e50-9b9e-574a2c2d3b7a")
     (attr smd)
     (fp_text reference "D3" (at -0.6 -1.95 90 unlocked) (layer "F.SilkS") hide
@@ -867,10 +880,14 @@
     (tags "WSON NoLead")
     (property "JLC Basic" "N")
     (property "LCSC" "C395511")
+    (property "LCSC2" "C2940197")
     (property "MPN " "GD25Q64CWIGR")
+    (property "MPN2" "W25Q64JVZPIQ")
     (property "Manufacturer" "GigaDevice Semicon Beijing ")
+    (property "Manufacturer2" "Winbond")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "N")
     (path "/578f7d98-6025-491f-b2c7-18b0b10fb26e")
     (attr smd)
     (fp_text reference "U2" (at 0 -3.45) (layer "F.SilkS") hide
@@ -941,6 +958,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/2fe6a03c-7812-43d6-8a4b-7b4bba08ba9f")
     (attr smd)
     (fp_text reference "R9" (at 0 -1.17 90) (layer "F.SilkS") hide
@@ -987,6 +1005,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/28dae330-ef7e-44b5-b158-e707ad4ab15a")
     (attr smd)
     (fp_text reference "R7" (at 0 -1.17 90) (layer "F.SilkS") hide
@@ -1033,6 +1052,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/995780ec-48b1-4b0d-bc50-ef12102751c2")
     (attr smd)
     (fp_text reference "C2" (at 0 -1.16 90) (layer "F.SilkS") hide
@@ -1077,6 +1097,7 @@
     (property "Manufacturer" "Jing Extension of the Electronic Co")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/170a9536-063a-4337-975c-ac1de8dd46d2")
     (attr smd)
     (fp_text reference "J1" (at 0 5.78866) (layer "F.SilkS") hide
@@ -1149,6 +1170,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/43f8a866-9b05-4b81-bed8-22767c4dd6f2")
     (attr smd)
     (fp_text reference "R4" (at 0 -1.17 90) (layer "F.SilkS") hide
@@ -1195,6 +1217,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/6c7f2670-e47a-4d08-9ee1-8c345dd88f55")
     (attr smd)
     (fp_text reference "C15" (at 0 -1.16 90) (layer "F.SilkS") hide
@@ -1241,6 +1264,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/f58ce4f6-5a20-46fa-a402-46bd87e4abe2")
     (attr smd)
     (fp_text reference "R11" (at 0 -1.17) (layer "F.SilkS") hide
@@ -1287,6 +1311,7 @@
     (property "Manufacturer" "FH(Guangdong Fenghua Advanced Tech)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/f8ead219-4c42-4a13-9f7e-0092bb46a2ab")
     (attr smd)
     (fp_text reference "C7" (at 0 -1.16) (layer "F.SilkS") hide
@@ -1333,6 +1358,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/4b5c60ee-d38c-4b79-8956-a87daa0713e4")
     (attr smd)
     (fp_text reference "R15" (at 0 -1.17) (layer "F.SilkS") hide
@@ -1379,6 +1405,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/571a4feb-23d9-44ee-80a4-4aa79223c91e")
     (attr smd)
     (fp_text reference "C12" (at 0 -1.16) (layer "F.SilkS") hide
@@ -1425,6 +1452,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/9877bf28-963a-4480-8433-89dd0da263b6")
     (attr smd)
     (fp_text reference "C5" (at 0 -1.16) (layer "F.SilkS") hide
@@ -1471,6 +1499,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/997cb231-50c8-4d21-8ed8-7374ef99c345")
     (attr smd)
     (fp_text reference "C1" (at 0 0) (layer "F.SilkS") hide
@@ -1517,6 +1546,7 @@
     (property "Manufacturer" "XKB Connectivity")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/65bba264-2c3c-4c29-b317-ace99b3292ef")
     (attr smd)
     (fp_text reference "SW1" (at 0 -2.45 90) (layer "F.SilkS") hide
@@ -1575,6 +1605,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/4ec66b78-123c-4da1-b8b3-af59b874e641")
     (attr smd)
     (fp_text reference "R12" (at 0 -1.17 90) (layer "F.SilkS") hide
@@ -1621,6 +1652,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/5b454570-2719-4df1-8b1c-9896167cb85b")
     (attr smd)
     (fp_text reference "R5" (at 0 -0.1 90) (layer "F.SilkS") hide
@@ -1667,6 +1699,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/e891b433-8f8c-451a-9a1f-eebc6bd34030")
     (attr smd)
     (fp_text reference "R17" (at 0 -1.17 90) (layer "F.SilkS") hide
@@ -1713,6 +1746,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/5229cd57-cdd8-46bf-80cc-0a5016c831d4")
     (attr smd)
     (fp_text reference "R3" (at 0 -1.17 90) (layer "F.SilkS") hide
@@ -1759,6 +1793,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/00000000-0000-0000-0000-00005e15580f")
     (attr smd)
     (fp_text reference "R1" (at 0 -1.17) (layer "F.SilkS") hide
@@ -1805,6 +1840,7 @@
     (property "Manufacturer" "BOURNS")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/00000000-0000-0000-0000-00005e24d578")
     (attr smd)
     (fp_text reference "F1" (at 0 -1.43) (layer "F.SilkS") hide
@@ -1851,6 +1887,7 @@
     (property "Manufacturer" "Changjiang Electronics Tech (CJ) ")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/96e720cf-a43a-4c36-b098-0254752e164b")
     (attr smd)
     (fp_text reference "Q1" (at 0 -1.7) (layer "F.SilkS") hide
@@ -1911,6 +1948,7 @@
     (property "Manufacturer" "FH(Guangdong Fenghua Advanced Tech)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/606975fb-f1e1-4e6a-bbbb-70d6c66dff8b")
     (attr smd)
     (fp_text reference "C6" (at 0 -1.16 90) (layer "F.SilkS") hide
@@ -1957,6 +1995,7 @@
     (property "Manufacturer" "Raspberry Pi ")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "N")
     (path "/9877cfc7-d4f2-4622-b27c-f4ceca7b0ed9")
     (attr smd)
     (fp_text reference "U3" (at 0 -4.52) (layer "F.SilkS") hide
@@ -2146,6 +2185,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/f5d8d44c-9c49-475b-81ce-1b969c8fcffc")
     (attr smd)
     (fp_text reference "R13" (at 0 -1.17) (layer "F.SilkS") hide
@@ -2192,6 +2232,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/06de6216-fa1b-4372-9d4d-da76b637ef8b")
     (attr smd)
     (fp_text reference "C4" (at 0.07619 -0.17) (layer "B.SilkS") hide
@@ -2238,6 +2279,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/02bbe338-e864-4811-ae3c-6fac3a82486e")
     (attr smd)
     (fp_text reference "C9" (at 0 -1.16) (layer "F.SilkS") hide
@@ -2284,6 +2326,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/5186342e-99fb-4f17-af22-d9023d18b84e")
     (attr smd)
     (fp_text reference "C17" (at 0 -1.16) (layer "F.SilkS") hide
@@ -2330,6 +2373,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/9a1b8a44-559a-44bf-bf1b-343ae0265b06")
     (attr smd)
     (fp_text reference "C14" (at 0 -1.16) (layer "F.SilkS") hide
@@ -2372,10 +2416,14 @@
     (tags "SMD SMT crystal")
     (property "JLC Basic" "N")
     (property "LCSC" "C2149204")
+    (property "LCSC2" "C2149205")
     (property "MPN " "2TJ412000HYGBC")
+    (property "MPN2" "2TJ412000NYGBC")
     (property "Manufacturer" "JYJE")
+    (property "Manufacturer2" "JYJE")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "N")
     (path "/14dbd59f-1139-4825-bf45-aa8750d31f62")
     (attr smd)
     (fp_text reference "Y1" (at 0 -2.2 90) (layer "F.SilkS") hide
@@ -2434,6 +2482,7 @@
     (property "Manufacturer" "Everlight Elec")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y - any pink")
     (path "/00000000-0000-0000-0000-00005e358788")
     (attr smd)
     (fp_text reference "D2" (at 0 -1.43 90) (layer "F.SilkS") hide
@@ -2482,6 +2531,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/00000000-0000-0000-0000-00005e156cb1")
     (attr smd)
     (fp_text reference "R2" (at 0 -1.17) (layer "F.SilkS") hide
@@ -2528,6 +2578,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/4d134115-594f-478e-8b8c-8109e8a4f869")
     (attr smd)
     (fp_text reference "C18" (at 0 -1.16) (layer "F.SilkS") hide
@@ -2574,6 +2625,7 @@
     (property "Manufacturer" "Shikues")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "N")
     (path "/00000000-0000-0000-0000-00005e15b762")
     (attr smd)
     (fp_text reference "D1" (at 0 -1.85 90) (layer "F.SilkS") hide
@@ -2627,6 +2679,7 @@
     (property "Manufacturer" "Changjiang Electronics Tech (CJ) ")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/f6739207-c936-46c9-89dd-96cf9075e6de")
     (attr smd)
     (fp_text reference "Q2" (at 0 -1.7 180) (layer "F.SilkS") hide
@@ -2687,6 +2740,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/fc240221-3bf5-4e9f-8f7c-72ae20481d08")
     (attr smd)
     (fp_text reference "C13" (at 0 -1.16 90) (layer "F.SilkS") hide
@@ -2733,6 +2787,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/b8b6ddab-2ad1-4308-b073-b81f42da6c70")
     (attr smd)
     (fp_text reference "C3" (at 0 0) (layer "F.SilkS") hide
@@ -2779,6 +2834,7 @@
     (property "Manufacturer" "Samsung Electro-Mechanics")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/4437b9e2-28a1-49d6-863f-f93b80e274c2")
     (attr smd)
     (fp_text reference "C16" (at 0 -1.16 90) (layer "F.SilkS") hide
@@ -2825,6 +2881,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/64e3287d-7389-43d5-b812-417878c56b1e")
     (attr smd)
     (fp_text reference "R14" (at 0 0) (layer "F.SilkS") hide
@@ -2871,6 +2928,7 @@
     (property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "Y")
     (path "/6b33bb82-a910-4f05-bc7b-689b779eaa87")
     (attr smd)
     (fp_text reference "R8" (at 0 -1.17 90) (layer "F.SilkS") hide
@@ -2911,9 +2969,9 @@
     (at 127.65 102.7 180)
     (descr "THT pad as test Point, diameter 1.0mm, hole diameter 0.5mm")
     (tags "test point THT pad")
-    (property "DNP" "DNP")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "")
     (property "exclude_from_bom" "")
     (path "/2b41e7a9-0c09-4e41-9f7a-61ea0174a7da")
     (attr exclude_from_pos_files exclude_from_bom)
@@ -2939,9 +2997,9 @@
     (at 130.5 100.5 180)
     (descr "THT pad as test Point, diameter 1.0mm, hole diameter 0.5mm")
     (tags "test point THT pad")
-    (property "DNP" "DNP")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "")
     (property "exclude_from_bom" "")
     (path "/f364b99a-f6cc-4fc0-a904-3eae6fd13fe3")
     (attr exclude_from_pos_files exclude_from_bom)
@@ -2967,9 +3025,9 @@
     (at 130.5 102.3 180)
     (descr "THT pad as test Point, diameter 1.0mm, hole diameter 0.5mm")
     (tags "test point THT pad")
-    (property "DNP" "DNP")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "")
     (property "exclude_from_bom" "")
     (path "/02975932-bf30-4606-900b-744ae844a718")
     (attr exclude_from_pos_files exclude_from_bom)
@@ -2993,9 +3051,9 @@
   (footprint "josh-logos:sea-picro-silk" (layer "B.Cu")
     (tedit 0) (tstamp be0c856b-8ef2-4e19-a760-63c85014d4ef)
     (at 126.2 88.6 180)
-    (property "DNP" "DNP")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "")
     (property "exclude_from_bom" "")
     (path "/683ec5d2-a1e2-4b7c-88ff-16e5543c82f6")
     (attr board_only exclude_from_pos_files exclude_from_bom)
@@ -5192,9 +5250,9 @@
     (at 121.8 100 180)
     (descr "THT pad as test Point, diameter 1.0mm, hole diameter 0.5mm")
     (tags "test point THT pad")
-    (property "DNP" "DNP")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "")
     (property "exclude_from_bom" "")
     (path "/da9d8c97-5301-4179-9d57-0a9ed815b1de")
     (attr exclude_from_pos_files exclude_from_bom)
@@ -5218,9 +5276,9 @@
   (footprint "josh-logos:OSHW_Logo_3.6x3.6_F.Mask" (layer "B.Cu")
     (tedit 5EFF3F90) (tstamp f7d43406-366f-4e28-b077-a5ba452fce9a)
     (at 126.2 99.7 180)
-    (property "DNP" "DNP")
     (property "Sheetfile" "sea-picro.kicad_sch")
     (property "Sheetname" "")
+    (property "Substitute" "")
     (property "exclude_from_bom" "")
     (path "/00000000-0000-0000-0000-00005fd53dba")
     (attr through_hole exclude_from_pos_files exclude_from_bom)
