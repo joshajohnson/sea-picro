@@ -13,7 +13,7 @@ Item,Qty,Reference(s),Value,Footprint,JLC Basic,MPN ,LCSC,Manufacturer,MPN2,LCSC
 12,2,"R7, R8",27R,Resistor_SMD:R_0402_1005Metric,N,0402WGF270JTCE,C25100,UNI-ROYAL(Uniroyal Elec),,,,Y
 13,2,"R9, R15",1K,Resistor_SMD:R_0402_1005Metric,Y,0402WGF1001TCE,C11702,UNI-ROYAL(Uniroyal Elec),,,,Y
 14,3,"R11, R13, R14",51K,Resistor_SMD:R_0402_1005Metric,Y,0402WGF5102TCE,C25794,UNI-ROYAL(Uniroyal Elec),,,,Y
-15,1,U1,AP7365-33WG-7 ,josh-soic-sot-etc:SOT-23-5,N,AP7365-33WG-7 ,C150742,Diodes Incorporated,ME6211C33M5G-N,C82942,MICRONE(Nanjing Micro One Elec) ,Y - Confirm with Josh
+15,1,U1,XC6210B332MR-G,josh-soic-sot-etc:SOT-23-5,N,XC6210B332MR-G,C47719,Torex Semiconductor,,,,N
 16,1,U2,GD25Q64CWIGR,josh-dfn-qfn:WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4mm,N,GD25Q64CWIGR,C395511,GigaDevice Semicon Beijing ,W25Q64JVZPIQ,C2940197,Winbond,N
 17,1,U3,RP2040,josh-dfn-qfn:RP2040-QFN-56,N,RP2040,C2040,Raspberry Pi ,,,,N
 18,1,U4,74LVC1T45,josh-soic-sot-etc:SOT-563,N,SN74LVC1T45DRLR,C352970,Texas Instruments,,,,N
