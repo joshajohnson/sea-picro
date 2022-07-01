@@ -46,6 +46,7 @@ As such all of the components can be sourced from JLC's SMT parts library, with 
 ## Contribuitors
 
 - Michael Gard aka fig (@figthedevil / figurativelythedevil#4475) for adding castellated pads, teardrops, numerous DFM improvements, and feedback on the design.
+- Ant from [CustomKBD](https://customkbd.com/) for the Sea-Picro artwork.
 
 ## Contributing
 
