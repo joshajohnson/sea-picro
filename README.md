@@ -36,7 +36,7 @@ Sea-Picro was designed with the goal of being assembled at JLCPCB, as it will ea
 As such all of the components can be sourced from JLC's SMT parts library, with 8 of the components being basic parts, and 11 being extended. In quantity 50, each board comes out to $6 USD / $8 AUD + freight. (8th March 2022)
 
 ## Pinout
-![annotated pinout of PCB](documentation/pinout/sea-picro-top-pinout-rory-render)
+![annotated pinout of PCB](documentation/pinout/sea-picro-top-pinout-rory-render.png)
 
 ## Revision History
 - V0.3 added castellated pads to the EXT version, along with changing the pinout to conform to the "BastardKB RP2040 Pinout". Numerous DFM improvements and bug fixes as per [#2](https://github.com/joshajohnson/sea-picro/issues/2).
