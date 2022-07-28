@@ -10,7 +10,7 @@ from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
 from adafruit_hid.keycode import Keycode
 
 # Pinout order is around the normal pro micro pins anticlockwise, then the Elite-C pins anticlockwise. Maps to A->Z
-keypress_pins = [board.D0,  board.D1,   board.D2,   board.D3,   board.D4,   board.D5,   board.D6,   board.D7,   board.D8,   board.D9,   board.D21, board.D23, board.D20, board.D22, board.D26, board.D27, board.D28, board.D29, board.D10,  board.D11,  board.D12,  board.D18,  board.D19]
+keypress_pins = [board.D0,  board.D1,   board.D2,   board.D3,   board.D4,   board.D5,   board.D6,   board.D7,   board.D8,   board.D9,   board.D21, board.D23, board.D20, board.D22, board.D26, board.D27, board.D28, board.D29, board.D12,  board.D13,  board.D14,  board.D15,  board.D16]
 keys_pressed =  [Keycode.A, Keycode.B,  Keycode.C,  Keycode.D,  Keycode.E,  Keycode.F,  Keycode.G,  Keycode.H,  Keycode.I,  Keycode.J,  Keycode.K, Keycode.L, Keycode.M, Keycode.N, Keycode.O, Keycode.P, Keycode.Q, Keycode.R, Keycode.S,  Keycode.T,  Keycode.U,  Keycode.V,  Keycode.W]
 
 key_pin_array = []

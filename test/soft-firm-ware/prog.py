@@ -31,7 +31,7 @@ def flash_circuitpython():
 
     time.sleep(2)
     print("RPi Bootloader found, copying CircuitPython")
-    retval = os.system("cp circuitpython-sea-picro.uf2 /media/josh/RPI-RP2")
+    retval = os.system("cp circuitpy-sea-picro.uf2 /media/josh/RPI-RP2")
     if retval != 0:
         print(f'{Fore.RED}#####################')
         print(f'{Fore.RED}FAILED TO FLASH CPY !')
