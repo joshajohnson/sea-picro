@@ -2,14 +2,16 @@
 
 Sea-Picro is a RP2040 based board in the Arduino Pro Micro form factor. Like [Sea-Micro](https://github.com/joshajohnson/sea-micro#sea-micro), it's designed to be a drop in replacement for keyboards wanting an upgrade from ATmega32u4 based pro micros.
 
+Boards are currently in production, and will be available at [CustomKBD](https://customkbd.com/) when ready.
+
 There are two variants:
 - EXT, featuring an Elite-C pinout, with dedicated 5V RGB LED pin, but without a reset button.
 - RST, featuring a pro micro pinout, with onboard RGB LED and reset button.
 
-**Sea-Picro EXT**
-![top of pcb render](documentation/sea-picro-ext-top.JPG)
+### Sea-Picro EXT
+![top of pcb render](documentation/renders/SEA-PICRO%20Pair%20Front.jpg)
 
-**Sea-Picro RST**
+### Sea-Picro RST
 ![top of pcb render](documentation/sea-picro-rst-top.JPG)
 
 ## Features
@@ -22,23 +24,17 @@ There are two variants:
 - Onboard power LED, along with a WS2812 LED for use with CircuitPython / as a status indicator on the RST version. EXT version has a 5V level shifter and extra pin to drive strings of WS2812 LEDs.
 - IO pinout identical to the [Sparkfun RP2040 Pro Micro](https://www.sparkfun.com/products/18288)
 
-![bottom of pcb render](documentation/sea-picro-ext-bot.JPG)
-
-## One Button Reset / Bootloader Circuit
-
-One of the tricky things with the RP2040 is that unlike the pro micro, to update the firmware you need to use two buttons in sequence to put it into the bootloader. To get around this, I've designed a circuit which when tapped for less than 500ms will reset the board, but when held for 500ms or more will jump into the bootloader. This makes life much easier for keyboards that install the microcontroller upside down, or have limited access to the reset buttons on the micro.
-
-![reset circuit schematic](documentation/reset-circuit.png)
-
-## Manufacturing
-Sea-Picro was designed with the goal of being assembled at JLCPCB, as it will ease sourcing for those who don't want to assemble the PCBs at home.
-
-As such all of the components can be sourced from JLC's SMT parts library, with 8 of the components being basic parts, and 11 being extended. In quantity 50, each board comes out to $6 USD / $8 AUD + freight. (8th March 2022)
-
 ## Pinout
 ![annotated pinout of PCB](documentation/pinout/sea-picro-top-pinout-rory-render.png)
 
+## One Button Reset / Bootloader Circuit
+
+One of the tricky things with the RP2040 is that unlike the pro micro, to update the firmware you need to use two buttons in sequence to put it into the bootloader. To get around this, I've designed a circuit which when tapped for less than 500ms will reset the board, but when held for 500ms or more will jump into the bootloader. This makes life much easier for keyboards that install the microcontroller upside down, or have limited access to the reset buttons on the micro. **NOTE:** C2 has since been increased to 10uF for better timing.
+
+![reset circuit schematic](documentation/reset-circuit.png)
+
 ## Revision History
+- V1.0 increased the reset/bootloader decision time, along with DFM improvements and BOM fixes.
 - V0.3 added castellated pads to the EXT version, along with changing the pinout to conform to the "BastardKB RP2040 Pinout". Numerous DFM improvements and bug fixes as per [#2](https://github.com/joshajohnson/sea-picro/issues/2).
 - V0.2 added the one button reset / bootloader circuit, along with a number features and DFM improvements. Fixes [#1](https://github.com/joshajohnson/sea-picro/issues/1).
 - V0.1 was more or less a clone of the Sparkfun RP2040, and was used as a refrence point for development. Tested and working, but not recomended for use.
@@ -47,7 +43,7 @@ As such all of the components can be sourced from JLC's SMT parts library, with 
 
 - Michael Gard aka fig (@figthedevil / figurativelythedevil#4475) for adding castellated pads, teardrops, numerous DFM improvements, and feedback on the design.
 - Ant from [CustomKBD](https://customkbd.com/) for the Sea-Picro artwork.
-- ClassicRory ([Instagram](https://instagram.com/classicrory), [Discord](https://discord.gg/rNYgYDtyRp)) for the numerous renders of Sea-Picro.
+- ClassicRory ([Instagram](https://instagram.com/classicrory), [Discord](https://discord.gg/rNYgYDtyRp)) for the amazing renders of Sea-Picro.
 
 ## Contributing
 
