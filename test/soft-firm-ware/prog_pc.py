@@ -33,7 +33,7 @@ def flash_circuitpython():
                 found_rpi = True
         time.sleep(1)
 
-    time.sleep(2)
+    time.sleep(3)
     print("RPi Bootloader found, copying CircuitPython")
     retval = os.system("cp circuitpy-sea-picro.uf2 /media/josh/RPI-RP2")
     if retval != 0:
@@ -117,26 +117,23 @@ def test_led():
     # RGB test time
     test_fail = False
     print(f'{Fore.YELLOW}Monitor LEDs please')
-    send_dut_string("led_red")
-    time.sleep(2)
-    send_dut_string("led_grn")
-    time.sleep(1)
-    send_dut_string("led_blu")
-    time.sleep(1)
+    send_dut_string("led_rgb")
     
     print(f'{Fore.YELLOW}Did LEDs cycle R/G/B? (Y)es / (N)o / (R)epeat{Fore.WHITE}')
-
+    time.sleep(3)
     recv = input()
 
     if recv.lower() == "y":
         print(f'{Fore.BLUE}RGB LEDs passed')
-        send_dut_string("led_rgb") # Party Time!
+        send_dut_string("led_rbw") # Party Time!
     elif recv.lower() == "n":
         send_tester_string(33) # Error
         print(f'{Fore.RED}RGB LEDs failed')
         test_fail = True
     elif recv.lower() == "r":
         test_led()
+
+    time.sleep(2)
 
     return test_fail
 
@@ -153,7 +150,7 @@ def test_keys(model):
 
     for pos in range(1,num_io+1):
         send_tester_string(pos)
-        time.sleep(0.1)
+        time.sleep(0.02)
         send_dut_string("io_test")
         ret_str = get_dut_string()
 
@@ -214,13 +211,6 @@ if __name__ == "__main__":
         print(f'{Fore.RED}Conneting to tester failed, possibly wrong /dev/ttyACM port')
         exit()
 
-    try:
-        data = serial.Serial("/dev/ttyACM2", 115200, timeout=0.1)
-        dut_serial_io = io.TextIOWrapper(io.BufferedRWPair(data, data))
-    except:
-        print(f'{Fore.RED}Conneting to DUT failed, possibly wrong /dev/ttyACM port')
-        exit()
-
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", "--circuitpython",action='store_true')
     parser.add_argument("-f", "--firmware",     action='store_true')
@@ -237,6 +227,12 @@ if __name__ == "__main__":
         test_fail = test_fail | flash_firmware()
         time.sleep(5)
     if args.rst_test:
+        try:
+            data = serial.Serial("/dev/ttyACM2", 115200, timeout=0.1)
+            dut_serial_io = io.TextIOWrapper(io.BufferedRWPair(data, data))
+        except:
+            print(f'{Fore.RED}Conneting to DUT failed, possibly wrong /dev/ttyACM port')
+            exit()
         test_fail = test_fail | test_dut("rst")
 
     if test_fail == False:
