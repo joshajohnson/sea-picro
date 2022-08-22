@@ -18,12 +18,34 @@ bl_pid = 0x0003
 cpy_vid = 0x6a6a
 cpy_pid = 0x5350
 
+TESTER_OKAY = 32
+TESTER_ERROR = 33
+TESTER_RESET = 34
+HARD_RESET = 255
+
 # Order is RST pins anticlockwise, then EXT pins anticlockwise
 sp_pin_map = ["D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D21", "D23", "D20", "D22", "D26", "D27", "D28", "D29", "D12", "D13", "D14", "D15", "D16"]
+
+def send_tester_string(string):
+    tester_serial_io.write(str(string) + "\r\n")
+    tester_serial_io.flush()
+
+def get_tester_string():
+    ret_str = tester_serial_io.readline()
+    return ret_str
+
+def send_dut_string(string):
+    dut_serial_io.write(str(string) + "\r\n")
+    dut_serial_io.flush()
+
+def get_dut_string():
+    ret_str = dut_serial_io.readline()[0:-1]
+    return ret_str
 
 def flash_circuitpython():
     ''' Flashes circuitpython firmware. '''
     test_fail = False
+
     found_rpi = False
     # Spinlock until RPi bootloader is found
     while found_rpi == False:
@@ -34,7 +56,7 @@ def flash_circuitpython():
         time.sleep(1)
 
     time.sleep(3)
-    print("RPi Bootloader found, copying CircuitPython")
+    print(f"{Fore.BLUE}RPi Bootloader found, copying CircuitPython")
     retval = os.system("cp circuitpy-sea-picro.uf2 /media/josh/RPI-RP2")
     if retval != 0:
         print(f'{Fore.RED}FAILED TO FLASH CPY !')
@@ -54,31 +76,16 @@ def flash_firmware():
                 found_cpy = True
         time.sleep(1)
 
-    print("CircuitPython found, copying test firmware")
+    print(f"{Fore.BLUE}CircuitPython found, copying test firmware")
     time.sleep(5)
     retval = os.system("cp -rf circuitpy-files/* /media/josh/CIRCUITPY")
     if retval != 0:
         print(f'{Fore.RED}FAILED TO FLASH TEST FW !')
         test_fail = True
+    else:
+        send_tester_string(HARD_RESET)
 
     return test_fail
-
-
-def send_tester_string(string):
-    tester_serial_io.write(str(string) + "\r\n")
-    tester_serial_io.flush()
-
-def get_tester_string():
-    ret_str = tester_serial_io.readline()
-    return ret_str
-
-def send_dut_string(string):
-    dut_serial_io.write(str(string) + "\r\n")
-    dut_serial_io.flush()
-
-def get_dut_string():
-    ret_str = dut_serial_io.readline()[0:-1]
-    return ret_str
 
 def test_ident():
     # Check we have the right /dev/ttyACM port
@@ -89,7 +96,7 @@ def test_ident():
     if ret_str == "ident = Sea-Picro!":
         print(f'{Fore.BLUE}IDENT passed')
     else:
-        send_tester_string(33) # Error
+        send_tester_string(TESTER_ERROR)
         print(f'{Fore.RED}IDENT Failed, possibly wrong /dev/ttyACM port')
         test_fail = True
 
@@ -104,10 +111,10 @@ def test_vbus():
     if ret_str == "vbus = high":
         print(f'{Fore.BLUE}VBUS detect passed')
     elif ret_str == "vbus = low":
-        send_tester_string(33) # Error
+        send_tester_string(TESTER_ERROR)
         print(f'{Fore.RED}VBUS detect failed')
     else:
-        send_tester_string(33) # Error
+        send_tester_string(TESTER_ERROR)
         print(f'{Fore.RED}VBUS detect failed')
         test_fail = True
 
@@ -127,7 +134,7 @@ def test_led():
         print(f'{Fore.BLUE}RGB LEDs passed')
         send_dut_string("led_rbw") # Party Time!
     elif recv.lower() == "n":
-        send_tester_string(33) # Error
+        send_tester_string(TESTER_ERROR)
         print(f'{Fore.RED}RGB LEDs failed')
         test_fail = True
     elif recv.lower() == "r":
@@ -142,6 +149,17 @@ def test_keys(model):
     Transmit number according to pin location, which test fixture will pull low, simulating key press.
     DUT will then respond with a bitfield showing IO state. '''
     test_fail = False
+
+    found_cpy = False
+    # Spinlock until circuitpython is found
+    while found_cpy == False:
+        dev = usb.core.find(find_all=1)
+        for cfg in dev:
+            if cfg.idVendor == cpy_vid and cfg.idProduct == cpy_pid:
+                found_cpy = True
+        time.sleep(1)
+
+    print("CircuitPython found, beginnig test")
 
     if model == "rst":
         num_io = 18 # RST has 18 IO
@@ -165,7 +183,7 @@ def test_keys(model):
                 if array[index] == "True":
                     pass
                 else:
-                    send_tester_string(33) # Error
+                    send_tester_string(TESTER_ERROR)
                     print(f'{Fore.RED}{sp_pin_map[pos-1]}: IO {sp_pin_map[index]} was NOT pressed')
                     key_fail = key_fail or True
                     test_fail = True
@@ -175,7 +193,7 @@ def test_keys(model):
                 if array[index] == "False":
                     pass
                 else:
-                    send_tester_string(33) # Error
+                    send_tester_string(TESTER_ERROR)
                     print(f'{Fore.RED}{sp_pin_map[pos-1]}: IO {sp_pin_map[index]} WAS pressed')
                     key_fail = key_fail or True
                     test_fail = True
@@ -218,7 +236,7 @@ if __name__ == "__main__":
     parser.add_argument("-e", "--ext_test",     action='store_true')
     args = parser.parse_args()
 
-    send_tester_string(34) # Reset status LEDs
+    send_tester_string(TESTER_RESET)
     test_fail = False
 
     if args.circuitpython:
@@ -227,18 +245,20 @@ if __name__ == "__main__":
         test_fail = test_fail | flash_firmware()
         time.sleep(5)
     if args.rst_test:
+
         try:
             data = serial.Serial("/dev/ttyACM2", 115200, timeout=0.1)
             dut_serial_io = io.TextIOWrapper(io.BufferedRWPair(data, data))
         except:
             print(f'{Fore.RED}Conneting to DUT failed, possibly wrong /dev/ttyACM port')
             exit()
+
         test_fail = test_fail | test_dut("rst")
 
     if test_fail == False:
-        send_tester_string(32) # Status OKAY
+        send_tester_string(TESTER_OKAY)
         print(f'{Fore.GREEN}ALL STEPS PASSED!!!')
     elif test_fail == True:
-        send_tester_string(33) # Status FAIL
+        send_tester_string(TESTER_ERROR)
         print(f'{Fore.RED}TEST FAILED!!!')
 
