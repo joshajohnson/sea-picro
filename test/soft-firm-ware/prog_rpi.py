@@ -1,5 +1,8 @@
+#!/usr/bin/python
+
 import RPi.GPIO as GPIO
-from time import sleep
+import time
+from adc import *
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -52,7 +55,7 @@ GPIO.setup(SR_nOE, GPIO.OUT, initial=GPIO.LOW)
 # Reset control of Sea-Picro
 SP_nRST = 21
 
-GPIO.setup(SR_SER, GPIO.OUT, initial=GPIO.HIGH)
+GPIO.setup(SP_nRST, GPIO.OUT, initial=GPIO.HIGH)
 
 # Reset and Run sense pins
 SP_RUN  = 26
@@ -61,22 +64,52 @@ SP_BOOT = 27
 GPIO.setup(SP_RUN, GPIO.IN)
 GPIO.setup(SP_BOOT, GPIO.IN)
 
-# Load switch enable and fault
+# Load switch enable and fault, removed on the first proto board as it does not work :(
 LOAD_SW_nFAULT = 22
 LOAD_SW_ENABLE = 23
-
 GPIO.setup(LOAD_SW_nFAULT, GPIO.IN)
-GPIO.setup(LOAD_SW_ENABLE, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(LOAD_SW_ENABLE, GPIO.IN) # Set to high Z as not in use
+# GPIO.setup(LOAD_SW_ENABLE, GPIO.OUT, initial=GPIO.LOW)
 
+def io_set(pin):
+    GPIO.output(pin, GPIO.HIGH)
+
+def io_clear(pin):
+    GPIO.output(pin, GPIO.LOW)
+
+def led_set(pin):
+    GPIO.output(pin, GPIO.LOW)
+
+def led_clear(pin):
+    GPIO.output(pin, GPIO.HIGH)
+
+# Sets the IO per bit matrix passed in
+def shift_out(bit_matrix, total_pins=23):
+    io_set(SR_nCLR)
+    io_clear(SR_nOE)
+    io_clear(SR_RCLK)
+
+    for i in range(0, total_pins):
+        io_clear(SR_CLK)
+
+        if bit_matrix & (1 << i):
+            io_clear(SR_SER)
+        else:
+            io_set(SR_SER)
+        io_set(SR_CLK)
+        io_clear(SR_SER)
+
+    io_clear(SR_CLK)
+    io_set(SR_RCLK)
+
+IO_TO_SR_MAP = [15, 16, 17, 18, 19, 20, 21, 22, 7, 8, 14, 0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13]
+
+adc_init()
 while True:
-    # GPIO.output(LED_RED, GPIO.HIGH)
-    # GPIO.output(LED_GREEN, GPIO.LOW)
-    # sleep(1)
-    # GPIO.output(LED_RED, GPIO.LOW)
-    # GPIO.output(LED_GREEN, GPIO.HIGH)
-    # sleep(1)
-
-    if GPIO.input(SW_TEST) == GPIO.HIGH:
-        GPIO.output(LED_RED, GPIO.HIGH)
-    else:
-        GPIO.output(LED_RED, GPIO.LOW)
+    print("CC: {}".format(adc_read("CC")))
+    time.sleep(1)
+    print("3V3: {}".format(adc_read("3V3")))
+    time.sleep(1)
+    print("5V0: {}".format(adc_read("5V0")))
+    time.sleep(1)
+    
