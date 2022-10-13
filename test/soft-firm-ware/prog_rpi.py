@@ -1,115 +1,205 @@
-#!/usr/bin/python
-
+# System imports
 import RPi.GPIO as GPIO
 import time
+import sys
+import os
+from colorama import Fore
+import serial
+from serial.tools import list_ports
+import usb.core
+
+# Local imports
+sys.path.append("rpi-lib")
+from sp_io import *
 from adc import *
+from shift_reg import *
+from sp_serial import *
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
-# Output LEDs, active low
-LED_RED     = 12
-LED_GREEN   = 13
-
-GPIO.setup(LED_RED, GPIO.OUT, initial=GPIO.HIGH)
-GPIO.setup(LED_GREEN, GPIO.OUT, initial=GPIO.HIGH)
-
-# Push buttons for user input, active high
-SW_PASS     = 4
-SW_FAIL     = 5
-
-GPIO.setup(SW_PASS, GPIO.IN)
-GPIO.setup(SW_FAIL, GPIO.IN)
-
-# Slide switches for mode select
-SW_EXT_RST  = 8     # HIGH = EXT, LOW = RST
-SW_BOOTLD   = 9     # HIGH = YES, LOW = NO
-SW_FIRMWARE = 10    # HIGH = YES, LOW = NO
-SW_TEST     = 11    # HIGH = YES, LOW = NO
-
-GPIO.setup(SW_EXT_RST, GPIO.IN)
-GPIO.setup(SW_BOOTLD, GPIO.IN)
-GPIO.setup(SW_FIRMWARE, GPIO.IN)
-GPIO.setup(SW_TEST, GPIO.IN)
-
-# Short detect control outputs
-SHORT_CTRL_5V   = 6
-SHORT_CTRL_3V3  = 7
-
-GPIO.setup(SHORT_CTRL_5V, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(SHORT_CTRL_3V3, GPIO.OUT, initial=GPIO.LOW)
-
-# Shift register outputs
-SR_SER  = 16
-SR_CLK  = 17
-SR_nCLR = 18
-SR_RCLK = 19
-SR_nOE  = 20
-
-GPIO.setup(SR_SER, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(SR_CLK, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(SR_nCLR, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(SR_RCLK, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(SR_nOE, GPIO.OUT, initial=GPIO.LOW)
-
-# Reset control of Sea-Picro
-SP_nRST = 21
-
-GPIO.setup(SP_nRST, GPIO.OUT, initial=GPIO.HIGH)
-
-# Reset and Run sense pins
-SP_RUN  = 26
-SP_BOOT = 27
-
-GPIO.setup(SP_RUN, GPIO.IN)
-GPIO.setup(SP_BOOT, GPIO.IN)
-
-# Load switch enable and fault, removed on the first proto board as it does not work :(
-LOAD_SW_nFAULT = 22
-LOAD_SW_ENABLE = 23
-GPIO.setup(LOAD_SW_nFAULT, GPIO.IN)
-GPIO.setup(LOAD_SW_ENABLE, GPIO.IN) # Set to high Z as not in use
-# GPIO.setup(LOAD_SW_ENABLE, GPIO.OUT, initial=GPIO.LOW)
-
-def io_set(pin):
-    GPIO.output(pin, GPIO.HIGH)
-
-def io_clear(pin):
-    GPIO.output(pin, GPIO.LOW)
-
-def led_set(pin):
-    GPIO.output(pin, GPIO.LOW)
-
-def led_clear(pin):
-    GPIO.output(pin, GPIO.HIGH)
-
-# Sets the IO per bit matrix passed in
-def shift_out(bit_matrix, total_pins=23):
-    io_set(SR_nCLR)
-    io_clear(SR_nOE)
-    io_clear(SR_RCLK)
-
-    for i in range(0, total_pins):
-        io_clear(SR_CLK)
-
-        if bit_matrix & (1 << i):
-            io_clear(SR_SER)
-        else:
-            io_set(SR_SER)
-        io_set(SR_CLK)
-        io_clear(SR_SER)
-
-    io_clear(SR_CLK)
-    io_set(SR_RCLK)
-
+RST  = 17
+EXT  = 23
+dut_type = None
+# Map between IO position on Sea-Picro and location in shift reg chain
 IO_TO_SR_MAP = [15, 16, 17, 18, 19, 20, 21, 22, 7, 8, 14, 0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13]
+# IO list of SP in same order as above
+SP_PIN_MAP = ["D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D21", "D23", "D20", "D22", "D26", "D27", "D28", "D29", "D12", "D13", "D14", "D15", "D16"]
 
-adc_init()
-while True:
-    print("CC: {}".format(adc_read("CC")))
-    time.sleep(1)
-    print("3V3: {}".format(adc_read("3V3")))
-    time.sleep(1)
-    print("5V0: {}".format(adc_read("5V0")))
-    time.sleep(1)
+# USB strings
+RPI_VID = 0x2e8a
+RPI_PID = 0x0003
+
+CPY_VID = 0x6a6a
+CPY_PID = 0x5350
+
+def flash_circuitpython():
+    ''' Flashes circuitpython firmware. '''
+    test_fail = False
+
+    found_rpi = False
+    # Spinlock until RPi bootloader is found
+    while found_rpi == False:
+        dev = usb.core.find(find_all=1)
+        for cfg in dev:
+            if cfg.idVendor == RPI_VID and cfg.idProduct == RPI_PID:
+                found_rpi = True
+        print(f"{Fore.BLUE}Searching for Bootloader")
+        time.sleep(1)
+
+    time.sleep(3)
+    print(f"{Fore.BLUE}RPi Bootloader found, copying CircuitPython")
+    retval = os.system("cp circuitpy-sea-picro.uf2 /media/pi/RPI-RP2")
+    if retval != 0:
+        print(f'{Fore.RED}FAILED TO FLASH CPY !')
+        test_fail = True
+
+    return test_fail
+
+def flash_firmware():
+    ''' Flashes test firmware. '''
+    test_fail = False
+    found_cpy = False
+    # Spinlock until circuitpython is found
+    while found_cpy == False:
+        dev = usb.core.find(find_all=1)
+        for cfg in dev:
+            if cfg.idVendor == CPY_VID and cfg.idProduct == CPY_PID:
+                found_cpy = True
+        time.sleep(1)
+
+    print(f"{Fore.BLUE}CircuitPython found, copying test firmware")
+    time.sleep(5)
+    retval = os.system("cp -rf circuitpy-files/* /media/pi/CIRCUITPY")
+    if retval != 0:
+        print(f'{Fore.RED}FAILED TO FLASH TEST FW !')
+        test_fail = True
+    else:
+        sp_reset()
+
+    return test_fail
+
+def test_ident():
+    # Check we have the right /dev/ttyACM port
+    test_fail = False
+    send_dut_string("ident")
+    ret_str = get_dut_string()
+
+    if ret_str == "ident = Sea-Picro!":
+        print(f'{Fore.BLUE}IDENT passed')
+    else:
+        led_fail()
+        print(f'{Fore.RED}IDENT Failed, possibly wrong /dev/ttyACM port')
+        test_fail = True
+
+    return test_fail
+
+def test_vbus():
+    # Check VBUS detection
+    test_fail = False
+    send_dut_string("vbus_test")
+    ret_str = get_dut_string()
+
+    if ret_str == "vbus = high":
+        print(f'{Fore.BLUE}VBUS detect passed')
+    elif ret_str == "vbus = low":
+        led_fail()
+        print(f'{Fore.RED}VBUS detect failed')
+    else:
+        led_fail()
+        print(f'{Fore.RED}VBUS detect failed')
+        test_fail = True
+
+    return test_fail
+
+def test_led():
+    # RGB test time
+    test_fail = False
+    print(f'{Fore.YELLOW}Monitor LEDs please')
+    send_dut_string("led_rgb")
     
+    print(f'{Fore.YELLOW}Did LEDs cycle R/G/B? (Y)es / (N)o / (R)epeat{Fore.WHITE}')
+    time.sleep(3)
+    recv = input()
+
+    if recv.lower() == "y":
+        print(f'{Fore.BLUE}RGB LEDs passed')
+        send_dut_string("led_rbw") # Party Time!
+    elif recv.lower() == "n":
+        led_fail()
+        print(f'{Fore.RED}RGB LEDs failed')
+        test_fail = True
+    elif recv.lower() == "r":
+        test_led()
+
+    time.sleep(2)
+
+    return test_fail
+
+def test_cc():
+    cc_val = adc_read("CC")
+
+    if cc_val < 3000:
+        print(f'{Fore.BLUE}CC pin passed')
+        return True
+    else:
+        print(f'{Fore.RED}CC pin failed')
+        return False
+
+def test_io():
+    pass # TODO
+
+def test_dut(model):
+
+    test_fail = False
+
+    test_fail = test_fail or test_ident()
+    test_fail = test_fail or test_vbus()
+    test_fail = test_fail or test_cc()
+    test_fail = test_fail or test_led()
+    # test_fail = test_fail or test_io(model)
+
+# Init all the things!
+io_init()
+adc_init()
+shift_reg_init()
+while True:
+    print(f"{Fore.YELLOW}Press YES to begin test!")
+    led_reset()
+    while True:
+        if (io_get(SW_YES)):
+            time.sleep(0.1) # Shitty debounce
+            print(f"{Fore.BLUE}Beginning test!")
+            test_fail = False
+
+            # Configure tester for EXT or RST
+            if (io_get(SW_EXT_RST)):
+                print(f"{Fore.BLUE}DUT = EXT")
+                dut_type = EXT
+            else:
+                print(f"{Fore.BLUE}DUT = RST")
+                dut_type = RST
+
+            # Check if we need to flash cpy or not
+            if (io_get(SW_BOOTLD)):
+                # Need to reset board to throw into bootloader
+                sp_bootloader()
+                flash_circuitpython()
+
+            # Check if we need to flash firmare / test code
+            if (io_get(SW_FIRMWARE)):
+                flash_firmware()
+
+            if (io_get(SW_TEST)):
+                time.sleep(10)
+                print (list_ports.main())
+                serial_init()
+                test_dut(dut_type)
+
+            if test_fail == False:
+                print(f'{Fore.GREEN}ALL STEPS PASSED!!!')
+            elif test_fail == True:
+                print(f'{Fore.RED}TEST FAILED!!!')
+
+            break
+

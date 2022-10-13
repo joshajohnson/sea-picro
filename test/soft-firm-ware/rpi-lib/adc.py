@@ -14,9 +14,9 @@ def adc_init():
 
 def adc_read(adc):
     if adc == "CC":
-        adc_count = bus.read_i2c_block_data(0x50, 0x00, 2)
-    elif adc == "3V3":
         adc_count = bus.read_i2c_block_data(0x51, 0x00, 2)
+    elif adc == "3V3":
+        adc_count = bus.read_i2c_block_data(0x50, 0x00, 2)
     elif adc == "5V0":
         adc_count = bus.read_i2c_block_data(0x52, 0x00, 2)
     
