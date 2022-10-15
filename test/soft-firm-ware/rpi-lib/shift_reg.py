@@ -17,20 +17,20 @@ def shift_reg_init():
     GPIO.setup(SR_RCLK, GPIO.OUT, initial=GPIO.HIGH)
     GPIO.setup(SR_nOE, GPIO.OUT, initial=GPIO.LOW)
 
-def shift_out(bit_matrix, num_io):
-    io_set(SR_nCLR)
-    io_clear(SR_nOE)
-    io_clear(SR_RCLK)
+def shift_out(bit_matrix):
+    io_high(SR_nCLR)
+    io_low(SR_nOE)
+    io_low(SR_RCLK)
 
-    for i in range(0, num_io):
-        io_clear(SR_CLK)
+    for i in range(0, 23):  # There are 23 pins connected to the shift register
+        io_low(SR_CLK)
 
         if bit_matrix & (1 << i):
-            io_clear(SR_SER)
+            io_low(SR_SER)
         else:
-            io_set(SR_SER)
-        io_set(SR_CLK)
-        io_clear(SR_SER)
+            io_high(SR_SER)
+        io_high(SR_CLK)
+        io_low(SR_SER)
 
-    io_clear(SR_CLK)
-    io_set(SR_RCLK)
+    io_low(SR_CLK)
+    io_high(SR_RCLK)

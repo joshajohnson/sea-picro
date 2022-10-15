@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+from colorama import Fore
 
 # Active low output
 LED_RED     = 12
@@ -61,14 +62,14 @@ def io_init():
     GPIO.setup(LOAD_SW_ENABLE, GPIO.IN) # Set to high Z as not in use
     # GPIO.setup(LOAD_SW_ENABLE, GPIO.OUT, initial=GPIO.LOW)
 
-def io_set(pin):
+def io_high(pin):
     GPIO.output(pin, GPIO.HIGH)
 
-def io_clear(pin):
+def io_low(pin):
     GPIO.output(pin, GPIO.LOW)
 
-def io_get(pin):
-    return not GPIO.input(pin)
+def io_read(pin):
+    return GPIO.input(pin)
 
 def led_set(pin):
     GPIO.output(pin, GPIO.LOW)
@@ -89,11 +90,38 @@ def led_pass():
     led_clear(LED_RED)
 
 def sp_reset():
-    io_clear(SP_nRST)
-    time.sleep(0.1)
-    io_set(SP_nRST)
+    io_low(SP_nRST)
+    time.sleep(0.3)
+    io_high(SP_nRST)
 
 def sp_bootloader():
-    io_clear(SP_nRST)
-    time.sleep(1)
-    io_set(SP_nRST)
+    test_fail = False
+    # Hold reset low for a second
+    io_low(SP_nRST)
+    time.sleep(1.5)
+    if (io_read(SP_RUN) == False) and (io_read(SP_BOOT) == False):
+        pass
+    else:
+        print(f'{Fore.RED}RESET HOLD LOW FAIL: RUN: {io_read(SP_RUN)} BOOT: {io_read(SP_BOOT)} (Expected R:0 B:0)')
+        test_fail = test_fail | True
+
+    # Release reset button
+    io_high(SP_nRST)
+    time.sleep(0.02)
+    if (io_read(SP_RUN) == True) and (io_read(SP_BOOT) == False):
+        pass
+    else:
+        print(f'{Fore.RED}BOOT ENTRY CONDITION FAIL: RUN: {io_read(SP_RUN)} BOOT: {io_read(SP_BOOT)} (Expected R:1 B:0)')
+        test_fail = test_fail | True
+
+    time.sleep(0.2)
+    if (io_read(SP_RUN) == True) and (io_read(SP_BOOT) == True):
+        pass
+    else:
+        print(f'{Fore.RED}NORMAL OPERATION FAIL: RUN: {io_read(SP_RUN)} BOOT: {io_read(SP_BOOT)} (Expected R:1 B:1)')
+        test_fail = test_fail | True
+
+    if test_fail == False:
+        print(f"{Fore.BLUE}One button reset circuit working correctly")
+
+    return test_fail

@@ -47,7 +47,7 @@ def flash_circuitpython():
                 found_rpi = True
         time.sleep(1)
         attempt_counter = attempt_counter + 1
-        if attempt_counter > 10:
+        if attempt_counter > 5:
             print(f'{Fore.RED}TIMEOUT TRYING TO FIND BOOTLOADER!')
             test_fail = True
             break
@@ -79,8 +79,8 @@ def flash_firmware():
         time.sleep(1)
         
         attempt_counter = attempt_counter + 1
-        if attempt_counter > 10:
-            print(f'{Fore.RED}TIMEOUT TRYING TO FIND BOOTLOADER!')
+        if attempt_counter > 15:
+            print(f'{Fore.RED}TIMEOUT TRYING TO FIND CIRCUITPYTHON!')
             test_fail = True
             break
 
@@ -94,6 +94,7 @@ def flash_firmware():
         else:
             test_fail = False
             sp_reset()
+            time.sleep(3)
 
     return test_fail
 
@@ -108,6 +109,7 @@ def test_ident():
         test_fail = False
     else:
         print(f'{Fore.RED}IDENT Failed, possibly wrong /dev/ttyACM port')
+        test_fail = True
 
     return test_fail
 
@@ -137,12 +139,12 @@ def test_led():
     time.sleep(1.5) # delay long enough that the operator has seen all colours work
 
     while True:
-        if (io_get(SW_YES)):
+        if (not io_read(SW_YES)):
             print(f'{Fore.BLUE}RGB LEDs passed')
             test_fail = False
             send_dut_string("led_rbw") # Party Time!
             break
-        if (io_get(SW_NO)):
+        if (not io_read(SW_NO)):
             print(f'{Fore.RED}RGB LEDs failed')
             break
 
@@ -162,7 +164,7 @@ def test_io(model):
     test_fail = False
 
     for pos in range(0, model):
-        shift_out((1 << IO_TO_SR_MAP[pos]), model)
+        shift_out((1 << IO_TO_SR_MAP[pos]))
         send_dut_string("io_test")
         ret_str = get_dut_string()
 
@@ -199,7 +201,10 @@ def test_dut(model):
 
     test_fail = False
 
-    test_fail = test_fail | test_ident()
+    # Don't continue testing if we can't ident properly
+    if test_ident():
+        return True
+
     test_fail = test_fail | test_vbus()
     test_fail = test_fail | test_cc()
     test_fail = test_fail | test_io(model)
@@ -217,44 +222,51 @@ while True:
     time.sleep(2)
     print(f"{Fore.YELLOW}Press YES to begin test!")
     while True:
-        if (io_get(SW_YES)):
-            time.sleep(0.1) # Shitty debounce
-            led_reset()
-            print(f"{Fore.BLUE}Beginning test!")
-            test_fail = False
+        # try:
+            if (not io_read(SW_YES)):
+                time.sleep(0.1) # Shitty debounce
+                led_reset()
+                print(f"{Fore.BLUE}Beginning test!")
+                test_fail = False
 
-            # Configure tester for EXT or RST
-            if (io_get(SW_EXT_RST)):
-                print(f"{Fore.BLUE}Sea-Picro EXT selected")
-                dut_type = EXT
-            else:
-                print(f"{Fore.BLUE}Sea-Picro RST selected")
-                dut_type = RST
+                # Configure tester for EXT or RST
+                if (not io_read(SW_EXT_RST)):
+                    print(f"{Fore.BLUE}Sea-Picro EXT selected")
+                    dut_type = EXT
+                else:
+                    print(f"{Fore.BLUE}Sea-Picro RST selected")
+                    dut_type = RST
 
-            # Check if we need to flash cpy or not
-            if (io_get(SW_BOOTLD) and (test_fail == False)):
-                # Need to reset board to throw into bootloader
-                sp_bootloader()
-                test_fail = flash_circuitpython()
+                # Check if we need to flash cpy or not
+                if (not io_read(SW_BOOTLD) and (test_fail == False)):
+                    # Need to reset board to throw into bootloader
+                    # We also check the reset circuit is working correctly here
+                    test_fail = sp_bootloader()
+                    if test_fail == True:
+                        break
+                    test_fail = flash_circuitpython()
 
-            # Check if we need to flash firmare / test code
-            if (io_get(SW_FIRMWARE) and (test_fail == False)):
-                test_fail = flash_firmware()
+                # Check if we need to flash firmare / test code
+                if (not io_read(SW_FIRMWARE) and (test_fail == False)):
+                    test_fail = flash_firmware()
 
-            # Check if we need to test the DUT
-            if (io_get(SW_TEST) and (test_fail == False)):
-                test_fail = serial_init()
-                if test_fail == True:
-                    break
-                test_fail = test_dut(dut_type)
+                # Check if we need to test the DUT
+                if (not io_read(SW_TEST) and (test_fail == False)):
+                    test_fail = serial_init()
+                    if test_fail == True:
+                        break
+                    test_fail = test_dut(dut_type)
 
-            # Advise user on how everything went
-            if test_fail == False:
-                print(f'{Fore.GREEN}ALL STEPS PASSED!!!')
-                led_pass()
-            elif test_fail == True:
-                print(f'{Fore.RED}TEST FAILED!!!')
-                led_fail()
+                # Advise user on how everything went
+                if test_fail == False:
+                    print(f'{Fore.GREEN}ALL STEPS PASSED!!!')
+                    led_pass()
+                elif test_fail == True:
+                    print(f'{Fore.RED}TEST FAILED!!!')
+                    led_fail()
 
-            break
+                break
+        # except:
+        #     print(f"{Fore.RED}Something went wrong, let's try again")
+        #     break
 
