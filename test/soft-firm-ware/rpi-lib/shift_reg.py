@@ -18,6 +18,8 @@ def shift_reg_init():
     GPIO.setup(SR_nOE, GPIO.OUT, initial=GPIO.LOW)
 
 def shift_out(bit_matrix, num_io):
+    io_set(SR_nCLR)
+    io_clear(SR_nOE)
     io_clear(SR_RCLK)
 
     for i in range(0, num_io):
