@@ -29,7 +29,7 @@ There are two variants:
 
 ## One Button Reset / Bootloader Circuit
 
-One of the tricky things with the RP2040 is that unlike the pro micro, to update the firmware you need to use two buttons in sequence to put it into the bootloader. To get around this, I've designed a circuit which when tapped for less than 500ms will reset the board, but when held for 500ms or more will jump into the bootloader. This makes life much easier for keyboards that install the microcontroller upside down, or have limited access to the reset buttons on the micro. **NOTE:** C2 has since been increased to 10uF for better timing.
+One of the tricky things with the RP2040 is that unlike the pro micro, to update the firmware you need to use two buttons in sequence to put it into the bootloader. To get around this, I've designed a circuit which when tapped for less than 500ms will reset the board, but when held for more than 1 second will jump into the bootloader. This makes life much easier for keyboards that install the microcontroller upside down, or have limited access to the reset buttons on the micro. **NOTE:** C2 has since been increased to 10uF for better timing so the below schematic is incorrect.
 
 ![reset circuit schematic](documentation/reset-circuit.png)
 
