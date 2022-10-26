@@ -2,7 +2,7 @@
 
 Sea-Picro is a RP2040 based board in the Arduino Pro Micro form factor. Like [Sea-Micro](https://github.com/joshajohnson/sea-micro#sea-micro), it's designed to be a drop in replacement for keyboards wanting an upgrade from ATmega32u4 based pro micros.
 
-Boards are currently in production, and will be available at [CustomKBD](https://customkbd.com/) when ready.
+Sea-Picro can be purchased from [CustomKBD](https://customkbd.com/).
 
 There are two variants:
 - EXT, featuring an Elite-C pinout, with dedicated 5V RGB LED pin, but without a reset button.
@@ -15,17 +15,23 @@ There are two variants:
 ![top of pcb render](documentation/sea-picro-rst-top.JPG)
 
 ## Features
-- Compatiable with any pro micro based keyboard (however requires new firmware)
+- Compatiable with most pro micro based keyboards
 - RP2040 microcontroller, with dual M0+ processors at up to 133MHz
 - Mid mount USB-C connector, which is low profile and can't be ripped off
 - Optional [Elite-C](https://deskthority.net/wiki/Elite-C) style pinout, adding an additional 5 IO for large keyboards
-- Single button reset / bootloader circuit which changes behaviour based on how long it's held (RP2040 usually requires two buttons to flash new firmware, making it challenging when installed upside down in a keyboard)
+- Single button reset / bootloader circuit which changes behavior based on how long it's held (RP2040 usually requires two buttons to flash new firmware, making it challenging when installed upside down in a keyboard)
 - ROM bootloader which prevents board from being bricked
-- Onboard power LED, along with a WS2812 LED for use with CircuitPython / as a status indicator on the RST version. EXT version has a 5V level shifter and extra pin to drive strings of WS2812 LEDs.
+- EXT version has a 5V level shifter and extra pin to drive strings of WS2812 LEDs.
+- RST version has a WS2812 LED for use with CircuitPython or as a status indicator on the RST version. 
+- Onboard power LED.
 - IO pinout identical to the [Sparkfun RP2040 Pro Micro](https://www.sparkfun.com/products/18288)
 
 ## Pinout
 ![annotated pinout of PCB](documentation/pinout/sea-picro-top-pinout-rory-render.png)
+
+## Documentation 
+
+Documentation including flashing instructions can be found on [my website](https://www.joshajohnson.com/sea-picro/#documentation).
 
 ## One Button Reset / Bootloader Circuit
 
